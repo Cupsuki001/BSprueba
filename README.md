@@ -1,2 +1,2 @@
-# BSprueba
-pa mañana
+# BS1
+MI PRIMER PROGRAMA QUE FUNCIONA CON BD
