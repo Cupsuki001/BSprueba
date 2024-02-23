@@ -52,6 +52,13 @@ namespace BS2
             }
         }
 
-        
+        public void modificar(Est1 Est1) 
+        {
+            int resultado = 0;
+            using (SqlConnection conn = Conxion.obtenerc())
+            {
+                string query = ("update Est1 ");
+            }
+        }
     }
 }

@@ -35,6 +35,7 @@
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -48,9 +49,11 @@
             MSKexam = new MaskedTextBox();
             TXBfinal = new TextBox();
             groupBox1 = new GroupBox();
+            TXBrefresc = new Button();
             BTNbase = new Button();
             BTNsalir = new Button();
             BTNcalc = new Button();
+            LBLres = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -58,7 +61,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 });
             dataGridView1.Location = new Point(45, 169);
             dataGridView1.Margin = new Padding(3, 4, 3, 4);
             dataGridView1.Name = "dataGridView1";
@@ -66,6 +69,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(734, 267);
             dataGridView1.TabIndex = 0;
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // Column1
             // 
@@ -108,6 +112,13 @@
             Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
             Column6.Width = 125;
+            // 
+            // Column7
+            // 
+            Column7.HeaderText = "id";
+            Column7.MinimumWidth = 6;
+            Column7.Name = "Column7";
+            Column7.Width = 125;
             // 
             // label1
             // 
@@ -222,6 +233,7 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.LightGray;
+            groupBox1.Controls.Add(TXBrefresc);
             groupBox1.Controls.Add(BTNbase);
             groupBox1.Controls.Add(BTNsalir);
             groupBox1.Controls.Add(BTNcalc);
@@ -233,6 +245,16 @@
             groupBox1.TabIndex = 13;
             groupBox1.TabStop = false;
             groupBox1.Text = "Opciones";
+            // 
+            // TXBrefresc
+            // 
+            TXBrefresc.Location = new Point(43, 219);
+            TXBrefresc.Name = "TXBrefresc";
+            TXBrefresc.Size = new Size(94, 29);
+            TXBrefresc.TabIndex = 3;
+            TXBrefresc.Text = "Refrescar";
+            TXBrefresc.UseVisualStyleBackColor = true;
+            TXBrefresc.Click += TXBrefresc_Click;
             // 
             // BTNbase
             // 
@@ -267,11 +289,21 @@
             BTNcalc.UseVisualStyleBackColor = true;
             BTNcalc.Click += BTNcalc_Click;
             // 
+            // LBLres
+            // 
+            LBLres.AutoSize = true;
+            LBLres.Location = new Point(1005, 96);
+            LBLres.Name = "LBLres";
+            LBLres.Size = new Size(17, 20);
+            LBLres.TabIndex = 14;
+            LBLres.Text = "0";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1029, 471);
+            ClientSize = new Size(1138, 471);
+            Controls.Add(LBLres);
             Controls.Add(groupBox1);
             Controls.Add(TXBfinal);
             Controls.Add(MSKexam);
@@ -321,5 +353,8 @@
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
         public Button BTNbase;
+        private DataGridViewTextBoxColumn Column7;
+        private Button TXBrefresc;
+        private Label LBLres;
     }
 }

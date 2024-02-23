@@ -11,32 +11,15 @@ namespace BS2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            TXBfinal.Enabled = false;
+            
 
 
         }
 
         private void BTNcalc_Click(object sender, EventArgs e)
         {
-            Est1 es = new Est1();
-            es.nombre = TXBnom.Text;
-            es.carnet = Convert.ToInt16(MSKcarnt.Text);
-            es.apelli = TXBapell.Text;
-            es.acum = Convert.ToInt16(MSKacum.Text);
-            es.exam = Convert.ToInt16(MSKexam.Text);
+            
 
-
-            int result = Est3.agregar(es);
-
-            if (result > 0)
-            {
-                MessageBox.Show("SE GUARDO");
-            }
-            else
-            {
-                MessageBox.Show("NO SE GUARDO");
-            }
-            dataGridView1.DataSource = Est3.presentar();
 
 
             try
@@ -68,22 +51,51 @@ namespace BS2
                     else
                     {
                         tt = exam + acum;
-                        TXBfinal.Text = tt.ToString();
+                        LBLres.Text = tt.ToString();
+                        MessageBox.Show("ingrese la respuesta en la nota final");
+                        
 
+                        if(LBLres.Text != TXBfinal.Text) 
+                        {
+                            MessageBox.Show("Tiene que ser igual");
+                        }
+                        else 
+                        {
 
-                        int num = dataGridView1.Rows.Add();
-                        dataGridView1.Rows[num].Cells[0].Value = MSKcarnt.Text + "U";
-                        dataGridView1.Rows[num].Cells[1].Value = TXBnom.Text;
-                        dataGridView1.Rows[num].Cells[2].Value = TXBapell.Text;
-                        dataGridView1.Rows[num].Cells[3].Value = MSKacum.Text;
-                        dataGridView1.Rows[num].Cells[4].Value = MSKexam.Text;
-                        dataGridView1.Rows[num].Cells[5].Value = TXBfinal.Text;
+                            Est1 es = new Est1();
+                            es.nombre = TXBnom.Text;
+                            es.carnet = Convert.ToInt16(MSKcarnt.Text);
+                            es.apelli = TXBapell.Text;
+                            es.acum = Convert.ToInt16(MSKacum.Text);
+                            es.exam = Convert.ToInt16(MSKexam.Text);
+                            es.final = Convert.ToInt32(TXBfinal.Text);
 
-                        TXBnom.Text = "";
-                        TXBapell.Text = "";
-                        MSKcarnt.Text = "";
-                        MSKacum.Text = "";
-                        MSKexam.Text = "";
+                            int result = Est3.agregar(es);
+
+                            if (result > 0)
+                            {
+                                MessageBox.Show("SE GUARDO");
+                            }
+                            else
+                            {
+                                MessageBox.Show("NO SE GUARDO");
+                            }
+
+                            int num = dataGridView1.Rows.Add();
+                            dataGridView1.Rows[num].Cells[0].Value = MSKcarnt.Text + "U";
+                            dataGridView1.Rows[num].Cells[1].Value = TXBnom.Text;
+                            dataGridView1.Rows[num].Cells[2].Value = TXBapell.Text;
+                            dataGridView1.Rows[num].Cells[3].Value = MSKacum.Text;
+                            dataGridView1.Rows[num].Cells[4].Value = MSKexam.Text;
+                            dataGridView1.Rows[num].Cells[5].Value = TXBfinal.Text;
+
+                            TXBnom.Text = "";
+                            TXBapell.Text = "";
+                            MSKcarnt.Text = "";
+                            MSKacum.Text = "";
+                            MSKexam.Text = "";
+                        }
+                        
                     }
                 }
 
@@ -136,6 +148,16 @@ namespace BS2
 
         }
 
-        
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void TXBrefresc_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = Est3.presentar();
+            BTNbase.Enabled = false;
+        }
     }
 }
